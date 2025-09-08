@@ -1,0 +1,187 @@
+global - it si from Node JS
+- How do 2 files work together - by using "require"
+- Just require other module to your module.
+- You can not directly access variables from one module to another module
+- Common.js Modules:
+-------------------
+- has - "module.exports" and "require"
+- by default used Node.js
+- Works Synchronously
+- Non-strict mode
+
+- ES Modules:
+------------- 
+- has - "import" and "export"
+- by default used by React, Vue, Angular
+- Works Asynchronously
+- Strict mode
+
+- When we create a module then when get that module by using "require" then behind the scene that module wraps inside a function  
+Ex: require("./xyz.js");
+BTS: function () {
+    // All the code of "xyz" module is run inside the function
+}
+- All the code of the module is wrapped inside a function(IIFE)
+
+- What "require" file does inside a module ?
+--------------
+1: Resolving the module
+- Means - It checks whether this is a "js file/util/json file/folder" and resolves it.
+2: Loading the module
+- Means - File context is loaded 
+3: Wraps inside IIFE(Compile)
+4: Evaluation - means return some value so that we can use that.
+5: Cached
+- Means- When we use "require('./xyz')" in many modules then first time "require" follows that 5 rule it 
+has then next onwards it caches the value and then quickly load.
+
+- Libuv is written in C language
+- It handles all the Asynchronous I/O(Non blocking I/O) work in Node JS
+- It works like a middleware between the JS engine and OS
+- It has Event loop and etc.
+
+- Node JS is Async but V8 Engine is Sync
+- Main Thread is the V8 Engine
+
+
+Episode 08:
+=======================
+
+- Whenever we give any peice of code to JS V8 Engine, it goes through the first stage which is known as "Parsing stage"
+- The "Parsing stage" itself do the "Lexical Analysis", code has broken down into "Tokens"
+- Now "Syntax Analysis" will happen to the "Token"
+- Now the "Token" will converted to "AST"(Abstract Syntax Tree)
+- AST is everything while you write any peice of code. If AST won't create then it will give us "Syntax Error"
+- When we write any peice of code AST definitly will create for that code.
+
+1: Parsing - Code -> Token
+2: Syntax Analysis - Token -> AST
+
+- astexplorer.net - to check AST code
+- Syntax Error - When our code not able to generate AST then that is known as "Syntax Error"
+- AST will given to a interpretter
+- AST will pass to the Ignition Interpretter(Available in JS ingine)
+- AST read by Ignition Interpretter and it is converted to ByteCode then Execution will happen
+- When we give our code to AST then AST is being processed by Ignition Interpretter then II finds out the code which repeated a lot. 
+Suppose there is a portion of code that is running again and again then there is a chance of optimization in that code. So what 
+happened is in the chance of optimization it gives that portion of code to given to "TURBO FAN" compiler. Now "TURBO FAN" compiler
+will convert that code to optimized machine code after that it is again executed.
+- This whole thing is known as JIT Compilation.
+
+- Different types of "GARBAGE COLLECTION" is there in JS Engine. Ex: Orinoco, Oil Pan, Scavenger
+- Also there is "MARK AND SWEEP" algorithm availbale in GC.
+
+- The code is broken down into tokens then those tokens are converted to AST, then that ASt goes to the interpreter, interpreter converts 
+into ByteCode, then bytecode executed. In between Compiler is happening, GC is happening. So these many things is handling by V8 Engine.
+
+- Our code will converted to AST then converted to ByteCode then executed.
+
+- 2 Types of Languages:
+Interpretted and Compiled.
+Interpretted:
+-------------
+- Reading the code line by line then Execute code line by line
+- Fast initial execution
+- Interpreter is there to do all the task
+
+Compiled:
+--------
+- First all code will compiled into Machine code then machine code will executes
+- Initially heavy but executed fast
+- Compiler is there to do all the task
+- Ex: java
+
+- JS has interpreter + Compiler
+- JS compilation method is known as JIT(Just In Time) Compilation 
+
+Episode 9:
+----------
+Event Loop:
+    Timer(setTimeout/Interval) -> Poll(fs.readFile) -> Check(setImmediate) -> Close =======> Callback Queue
+    In between each check EL will check "Process.nextTick -> Promise.callbackcs" ======> Microtask Queue(High Priority than CQ)
+
+- Once everything gets executed then "Event Loop" waits at the "Poll" phase.
+- This EL is different from Browser Event Loop.
+
+
+- Last line of the file
+- nextTick
+- Promise
+- Timer Expired
+- setImmediate
+
+- file reading cb
+- 2nd nextTiock
+- 2nd setImmediate
+- 2nd timer 
+
+
+Episode - 10:
+-------------
+- Inside the Libuv there are 4 threads bydefault
+- So if another code comes to this thread then that will wait for thread to be empty then only it will pushed to the thread.
+- UV manages the thread pool
+- When we give some code as async then that time Node uses Libuv -> UV Thread Pool(to do all the tasks)
+- Node js is single threaded or multi threaded ? The ans is depends how you uses node js, when you uses node js, what code are you running node js.  So It is Single threaded also multi-threaded
+- Libuv has "EVENT LOOP", "CALLBACK QUEUE", "THREAD POOL"`
+
+- Don't block the main thread
+Means - Don't use Sync methods, Heavy JSOn objects, Complex Regex, Complex Calculation/loops
+
+Episode - 11:
+-------------
+- Due to IP means every computer has unique IP(Internet Protocol) Address so due to that one computer can connected with other by using IP address, so that's why we called as WEB because we connected with each other by IP address.
+- PROTOCOL - Some set of rules which are define between computers to connect. Supposes one computer wants to connect with other computer so they can talk in similar language. That is known as IP.
+- Generally whenever we creating a web application we are creating a web server. That web server is a kind of http server.
+- We create a HTTP server that listens to the incoming request 
+- Whenever we request something from HTTP server than the response comes as a chunks to the client. So that chunks is known as "PACKETS"
+- The language that the client and server will speak is defined by HTTP/FTP/SMTP(they are languages)
+- But TCP/IP protocol is the protocol of sending the data over an IP
+
+- Whenever in your browser type "www.namastedev.com" behind the scene there is a call made to DNS(Domain Name Server) server, that DNS server is giving back the IP, now that IP call has made, so internally behind the scene that is done.
+
+- When you request the IP it goes to our server "namastedev.com", there is a http server who is handling your request. That http server now gets the video and gives back the video and that video you are seing coming in chunks(i.e, packets)
+
+- We can create differnet http server, but we need to add PORT(ex: 3000, it should be 4 digits) to each http server. So ports will be different for different http server.
+
+- Domain name(namastedev.com) maps to a IP(123..6.7), now IP + Port(3000), this 3000 port will tell me I am refering to a HTTP server, now if I will give some path like "/api"
+
+
+-Express is a framwork to create web server which handles the incoming request.  
+-To create HTTP server
+
+
+Episode 12:
+------------
+- A Database is an organized collection of data
+
+- DBMS - To fetch data effieientsly to put data efficiently in the database you need management system and that management system is know as DBMS
+- To inract with the data like to delete data, get some data etc
+
+- Relational Database - My SQL, Postgresql
+- No SQL Database - MongoDB
+- In 2009 it Came
+- Developed by 10Gen Company
+
+Episode 13:
+----------
+- Mongo DB Setup
+================
+    - Go to mongo db website
+    - Create a free M0 cluster
+    - Create a user
+    - Get the connection string
+        Ex: "mongodb+srv://gopal_das:Gopal@1287654321@namastenodegopal.q9izqq2.mongodb.net/";
+    - Install MongoDB Compass
+    - Create a database
+    - Install MongoDB Package
+    - Create a connection from code
+    - Documents CRUD - Create, Read, Update, Delete
+    MongoDB Docs - https://mongodb.github.io/node-mongodb-native/6.19/
+
+- Mongo DB Compass: It is a software that is help you access the database. 
+                    You can go over there and check the database what is there inside
+                    It is like UI for Database
+
+- "HelloWorld" -> called Database
+- "User" -> called collection

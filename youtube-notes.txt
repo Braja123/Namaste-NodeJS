@@ -1,0 +1,21 @@
+Episode 3 - Seup and install node js and write some code
+Episode - 4 - Describes in how different way we can use "export", "module.export", "require", "import", difference between require(common js) and import(ES Module)
+Episode - 5 - Deep dive into node js- mostly descried how node js works BTS and require works BTS. and node open source code
+Episode 6 - How JS code executes in JS engine and how libuv() works and how callstack works
+Episode 7 - How lubuv helps in async function and How JS engine blocks main thread in synchronous code, showing by writing code
+        - Sync code
+        - Async code
+        - Blocking Sync code
+        - setTimeout()
+        - Non Blocking I/O
+        - Main Thread
+        - Asynchronous I/O
+        - Libuv github
+
+Episode 8 - Deep dive into V8 Engine - Discuss the Architecture about V8 and it is necessary to know all these things, how our code works,
+how AST works, how our code interpreted and compiled. So everything you will get to know in this video. Very informative video.
+
+Episode 9 - Deep dive into Event Loop and This EL is different from Browser Event Loop. Somehow same but some extra things are there.
+Episode 10 - Deep dive into Libuv, thread pool
+Episode 11 - Deep dive into server, what is it and wrote code to create a server
+Episode 12 - Discuss Different types of Databases. Difference between RDBMS(MySQL) vs NoSQL(MongoDB)
