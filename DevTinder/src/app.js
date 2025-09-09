@@ -36,17 +36,39 @@ const app = express();
 //   res.send({ firstName: "San", lastName: "Das" });
 // });
 
-app.get("/user", (req, res) => {
-  // http://localhost:3000/user?userId=101&password="test"
-  console.log(req.query); // This is how we read the query Parameter
-  res.send({ firstName: "San", lastName: "Das" });
-});
+// app.get("/user", (req, res) => {
+//   // http://localhost:3000/user?userId=101&password="test"
+//   console.log(req.query); // This is how we read the query Parameter
+//   res.send({ firstName: "San", lastName: "Das" });
+// });
 
 // This : means dynamic routes
-app.get("/user/:userId/:name/:password", (req, res) => {
-  // Ex: http://localhost:3000/user/777
-  console.log(req.params); // This is how we read the query Parameter
-  res.send({ firstName: "San", lastName: "Das" });
+// app.get("/user/:userId/:name/:password", (req, res) => {
+//   // Ex: http://localhost:3000/user/777
+//   console.log(req.params); // This is how we read the query Parameter
+//   res.send({ firstName: "San", lastName: "Das" });
+// });
+
+// app.get("/user", (req, res, next) => {
+//   console.log("Handling the Route User");
+//   next();
+// });
+
+// app.get("/user", (req, res, next) => {
+//   console.log("Handling the Route User 2");
+//   res.send("Response 2");
+// });
+
+app.get("/getUserData", (req, res) => {
+  throw new Error("sjhdgfhjsdj");
+  res.send("Response 1");
+});
+
+// "err" has to be first parameter
+app.use("/", (err, req, res, next) => {
+  if (err) {
+    res.status(500).send("Something Went wrong");
+  }
 });
 
 // Server is created

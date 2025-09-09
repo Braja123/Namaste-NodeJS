@@ -249,5 +249,143 @@ app.get("/user", (req, res) => {
 app.get("/user/:userId/:name/:password", (req, res) => {
   // Ex: http://localhost:3000/user/777
   console.log(req.params); // This is how we read the query Parameter
-  res.send({ firstName: "San", lastName: "Das" });
+  res.send({ firstName: "San", lastName: "Das" });      // Here it means sending the response
+});
+
+Episode 5:
+----------
+app.get("/user", (req, res) => {
+    // If we don't write anything inside here, then the request will go on 
+});
+
+app.get("/user", (req, res) => {    // here first args is the "route", second args is the "Route Handler" and after that 
+                                        there can be multiple route handler
+});
+
+Ex 1: 
+app.get(
+  "/user",
+  //Route Handler
+  (req, res, next) => {
+    console.log("Handling the Route User");
+    res.send("Response!");
+    next();
+  },
+  (req, res) => {
+    // Route Handler 2
+    console.log("Handling the Route User 2");
+    res.send("Response 2!");
+  }
+);
+// O/P - In response we got - Response!
+// In console we will get - Handling the Route User, Handling the Route User 2 and Error (as we already send response to client)
+
+Ex 2: 
+app.get(
+  "/user",
+  //Route Handler
+  (req, res, next) => {
+    console.log("Handling the Route User");
+    next();
+    res.send("Response!");
+  },
+  (req, res) => {
+    // Route Handler 2
+    console.log("Handling the Route User 2");
+    res.send("Response 2!");
+  }
+);
+// O/P - In response we got - Response 2!
+// In console we will get - Handling the Route User, Handling the Route User 2 and Error (as we already send response to client)
+
+Ex 3:
+app.get(
+  "/user",
+  //Route Handler
+  (req, res, next) => {
+    console.log("Handling the Route User");
+    next();
+  },
+  (req, res, next) => {
+    console.log("Handling the Route User 2");
+    next();
+  },
+  (req, res, next) => {
+    console.log("Handling the Route User 3");
+    next();
+  }
+);
+// O/P - In response we got - Error(as express excepts another route but did not get)
+// In console we will get - Handling the Route User, Handling the Route User 2 and Handling the Route User 3
+
+Ex 4:
+app.get(
+  "/user",
+  //Route Handler
+  (req, res, next) => {
+    console.log("Handling the Route User");
+    next();
+  },
+  (req, res, next) => {
+    console.log("Handling the Route User 2");
+    next();
+  },
+  (req, res) => {
+    console.log("Handling the Route User 3");
+  }
+);
+// O/P - It will continue but we won't get response as we don't have response
+// In console we will get - Handling the Route User, Handling the Route User 2 and Handling the Route User 3
+
+- We can also wrap Router Handler's inside an array
+Ex: 
+app.get(
+  "/user",
+  //Route Handler
+  [
+    (req, res, next) => {
+      console.log("Handling the Route User");
+      next();
+    },
+    (req, res, next) => {
+      console.log("Handling the Route User 2");
+      next();
+    },
+    (req, res) => {
+      console.log("Handling the Route User 3");
+      res.send("Response 3");
+    },
+  ]
+);
+
+Ex: Below code will work in the same way
+app.get("/route", rh1, rh2, rh3, rh4)
+        OR
+app.get("/route", [rh1, rh2, rh3, rh4])
+        OR
+app.get("/route", [rh1, rh2], rh3, rh4)
+        OR
+app.get("/route", rh1, [rh2, rh3], rh4)
+
+EX: Below code will work same way like in a single Route handler
+app.get("/user", (req, res, next) => {
+  console.log("Handling the Route User");
+  next();
+});
+
+app.get("/user", (req, res, next) => {
+  console.log("Handling the Route User 2");
+  res.send("Response 2");
+});
+
+- When we sending a request to Express Server It will try to go one by one check all 
+these methods(Request Handlers/Middlewares) then whatever is matching over there it will send us the response.
+
+- To handle error everytime use "try and catch" block
+- But sometimes need to use like below
+Ex: 
+app.use("/", (err, req, res, next) => {         // "err" has to be first parameter
+  if (err) {
+    res.status(500).send("Something Went wrong");
+  }
 });

@@ -30,3 +30,4 @@ how many apis we have to create, LLD and HLD of the project, discuss http method
 Episode 3 - Create demo server using Express and start the project using nodemon
 Episode 4 - Explore routing and HTTP requests in code. How we can get request parameters,
  how to check apis in Postman, How to get dynamic routes
+Episode 5 - What is Middleware? Why we use? Showed everything with code. Error Handling with code
