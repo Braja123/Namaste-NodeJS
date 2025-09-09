@@ -19,3 +19,12 @@ Episode 9 - Deep dive into Event Loop and This EL is different from Browser Even
 Episode 10 - Deep dive into Libuv, thread pool
 Episode 11 - Deep dive into server, what is it and wrote code to create a server
 Episode 12 - Discuss Different types of Databases. Difference between RDBMS(MySQL) vs NoSQL(MongoDB)
+Episode 13 - Setup for MongoDB and write some code and discuss about that. MongoDB Cluster, MongoDB Compass, Collections
+
+SEASON 2:
+==========
+Episode 0 - Introduction to project
+Episode 1 - Discuss about Monolithic and Microservices
+Episode 2 - Full project planning like what are the collections we have to made, how many microservices we have to create,
+how many apis we have to create, LLD and HLD of the project
+Episode 3 - Create demo server using Express and start the project using nodemon

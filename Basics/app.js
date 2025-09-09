@@ -4,7 +4,7 @@ require("./xyz.js"); // here first "xyz.js" file run then next code run
 
 const util = require("node:util"); // util is available in code node js
 
-const { calculateSum, calculateMultiply } = require("./calculate");
+const { calculateSum, calculateMultiply } = require("./calculate/index.js");
 const data = require("./data.json");
 console.log(data);
 

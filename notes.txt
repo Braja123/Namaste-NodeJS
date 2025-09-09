@@ -185,3 +185,14 @@ Episode 13:
 
 - "HelloWorld" -> called Database
 - "User" -> called collection
+
+
+SEASON 2:
+=========
+Episode 3:
+----------
+Creating a Project:
+- initialize "package.json" file -> npm init
+- Install express js -> npm i express
+- Install nodemon for live update -> sudo npm i -g nodemon
+- run the application -> nodemon fileName
