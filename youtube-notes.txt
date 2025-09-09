@@ -26,5 +26,7 @@ SEASON 2:
 Episode 0 - Introduction to project
 Episode 1 - Discuss about Monolithic and Microservices
 Episode 2 - Full project planning like what are the collections we have to made, how many microservices we have to create,
-how many apis we have to create, LLD and HLD of the project
+how many apis we have to create, LLD and HLD of the project, discuss http methods
 Episode 3 - Create demo server using Express and start the project using nodemon
+Episode 4 - Explore routing and HTTP requests in code. How we can get request parameters,
+ how to check apis in Postman, How to get dynamic routes
